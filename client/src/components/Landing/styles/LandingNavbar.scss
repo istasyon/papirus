@@ -1,0 +1,40 @@
+@import '../../../constants/colors';
+
+.LandingNavbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  z-index: 100;
+  padding: 0 20px;
+}
+
+.LandingNavbar__logo {
+  color: #fff;
+}
+
+.LandingNavbar__list {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  list-style-type: none;
+}
+
+.LandingNavbar__list_item {
+  color: #fff;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.LandingNavbar__signup {
+  color: $red-one;
+  border: 1px solid $red-one;
+
+  &:hover {
+    color: #fff;
+    background-color: $red-one;
+  }
+}
