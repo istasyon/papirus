@@ -1,7 +1,7 @@
-const usersController = {};
-
-usersController.users = (req, res) => {
-  res.json({ message: 'USERS' });
+exports.users = (req, res) => {
+  res.json({ message: "USERS" });
 };
 
-module.exports = usersController;
+exports.getUser = (req, res) => {
+  res.json({ id: req.params.id });
+};
