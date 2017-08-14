@@ -11,37 +11,38 @@ export default class Values extends Component {
           Earn money by teaching flexibly in-person or online. Wherever and
           whenever you want.
         </h2>
-        <Grid fluid>
-          <Row>
-            <Col xs={6} sm={6} md={3}>
+        <Grid fluid style={{ textAlign: 'center' }}>
+          <Row className="Values__row">
+            <Col xs={6} sm={3} md={3}>
               <FontAwesome className="Values__icon" name="user" size="4x" />
-              <p>Free account</p>
+              <p className="Values__description">Free account</p>
             </Col>
-            <Col xs={6} sm={6} md={3}>
+            <Col xs={6} sm={3} md={3}>
+              <FontAwesome className="Values__icon" name="dollar" size="4x" />
+
+              <p className="Values__description">Earn money</p>
+            </Col>
+            <Col xs={6} sm={3} md={3}>
               <FontAwesome
                 className="Values__icon"
                 name="graduation-cap"
                 size="4x"
               />
-              <p>Free account</p>
+              <p className="Values__description">Review course requests</p>
             </Col>
             <Col xs={6} sm={3} md={3}>
-              <FontAwesome className="Values__icon" name="comments" size="4x" />
-              <p>Free account</p>
-            </Col>
-            <Col xs={6} sm={3} md={3}>
-              <FontAwesome className="Values__icon" name="dollar" size="4x" />
-              <p>Free account</p>
+              <FontAwesome className="Values__icon" name="smile-o" size="4x" />
+              <p className="Values__description">No payment hussle</p>
             </Col>
           </Row>
-          <Row>
-            <Col xs={6} sm={3} md={3}>
-              <FontAwesome className="Values__icon" name="calendar" size="4x" />
-              <p>Free account</p>
-            </Col>
+          <Row className="Values__row">
             <Col xs={6} sm={3} md={3}>
               <FontAwesome className="Values__icon" name="search" size="4x" />
-              <p>Free account</p>
+              <p className="Values__description">Reach more students</p>
+            </Col>
+            <Col xs={6} sm={3} md={3}>
+              <FontAwesome className="Values__icon" name="calendar" size="4x" />
+              <p className="Values__description">Teach whenever you want</p>
             </Col>
             <Col xs={6} sm={3} md={3}>
               <FontAwesome
@@ -49,11 +50,11 @@ export default class Values extends Component {
                 name="map-marker"
                 size="4x"
               />
-              <p>Free account</p>
+              <p className="Values__description">Teach wherever you want</p>
             </Col>
-            <Col xs={6} sm={6} md={3}>
-              <FontAwesome className="Values__icon" name="smile-o" size="4x" />
-              <p>Free account</p>
+            <Col xs={6} sm={3} md={3}>
+              <FontAwesome className="Values__icon" name="comments" size="4x" />
+              <p className="Values__description">Connect with your students</p>
             </Col>
           </Row>
         </Grid>

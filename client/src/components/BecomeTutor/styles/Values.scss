@@ -2,16 +2,27 @@
 
 .Values {
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .Values__heading {
   text-align: center;
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   font-size: 28px;
   font-weight: 300;
 }
 
+.Values__row {
+  margin-top: 30px;
+}
+
 .Values__icon {
   color: $red-one;
+}
+
+.Values__description {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #666;
 }
