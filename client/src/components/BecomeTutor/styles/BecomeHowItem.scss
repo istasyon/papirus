@@ -1,0 +1,33 @@
+@import '../../../constants/colors';
+
+.BecomeHowItem {
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto 30px auto;
+  padding: 20px;
+}
+
+.BecomeHowItem__items_container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin-top: 20px;
+}
+
+.BecomeHowItem__item {
+  margin-right: 20px;
+  flex: 1;
+}
+
+.BecomeHowItem__label {
+  height: 25px;
+  width: 25px;
+  border: 2px solid rgb(117, 117, 117);
+  border-radius: 50%;
+  text-align: center;
+}
+
+.BecomeHowItem__item_icon {
+  color: $red-one;
+  margin-bottom: 10px;
+}
