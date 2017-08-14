@@ -39,6 +39,7 @@ app.use(helmet());
 // Express will serve up production assets
 // like our main.js file, or main.css file!
 app.use(express.static('client/build'));
+app.use(express.static('src/assets'));
 
 app.use('/api', routes);
 // Express will serve up the index.html file
