@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-
-import LandingNavbar from "./LandingNavbar";
-import CATEGORIES from "../../constants/categories";
-import "./styles/Hero.scss";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import LandingNavbar from './LandingNavbar';
+import CATEGORIES from '../../constants/categories';
+import './styles/Hero.scss';
 
 class Hero extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: "",
+      searchValue: '',
       categories: CATEGORIES
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,14 +16,16 @@ class Hero extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.searchValue);
-    this.setState({ searchValue: "" });
+    this.props.history.push(
+      `/find-tutors/${this.state.searchValue.trim().toLowerCase()}`
+    );
+    this.setState({ searchValue: '' });
   }
 
   render() {
     return (
       <section className="Hero">
-        <LandingNavbar />
+        <LandingNavbar onHowItWorks={this.props.onHowItWorks} />
         <div className="Hero__overlay">
           <div className="Hero__content">
             <h1 className="Hero__title">
@@ -61,4 +63,4 @@ class Hero extends Component {
   }
 }
 
-export default Hero;
+export default withRouter(Hero);

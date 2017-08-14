@@ -1,0 +1,37 @@
+@import '../../../constants/colors';
+
+.Footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $blue-dark;
+  padding: 60px 0 120px 0;
+}
+
+.Footer__button_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.Footer__title {
+  font-size: 48px;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+.Footer__button_learn,
+.Footer__button_tutor {
+  outline: none !important;
+}
+
+.Footer__button_learn {
+  margin-right: 20px;
+  background-color: #dedede;
+  color: $blue-dark;
+}
+
+.Footer__button_tutor {
+  background-color: #dedede;
+  color: $blue-dark;
+}

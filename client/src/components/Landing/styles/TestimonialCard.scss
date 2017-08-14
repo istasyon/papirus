@@ -1,0 +1,20 @@
+.TestimonialCard {
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+}
+
+.TestimonialCard__avatar {
+  border-radius: 50px;
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  right: 10px;
+  bottom: -30px;
+}
+
+@media all and (max-width: 991px) {
+  .TestimonialCard {
+    margin-bottom: 50px;
+  }
+}
