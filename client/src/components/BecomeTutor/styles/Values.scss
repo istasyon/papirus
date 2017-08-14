@@ -1,0 +1,17 @@
+@import '../../../constants/colors';
+
+.Values {
+  padding-top: 50px;
+}
+
+.Values__heading {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.Values__icon {
+  color: $red-one;
+}
