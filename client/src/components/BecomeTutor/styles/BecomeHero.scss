@@ -1,0 +1,42 @@
+@import '../../../constants/colors';
+
+.BecomeHero {
+  height: 80vh;
+  background-image: url(../../../assets/backpacker.jpg);
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.BecomeHero__card {
+  background-color: $grey-card;
+  // height: 80%;
+  padding: 40px;
+  width: 400px;
+  position: absolute;
+  right: 5%;
+  bottom: 20px;
+}
+
+.BecomeHero__heading {
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 48px;
+}
+
+.BecomeHero__description {
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.BecomeHero__button {
+  background-color: $red-one;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 40px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
