@@ -1,0 +1,46 @@
+@import '../../../constants/colors';
+
+.TutorCard__container {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.TutorCard__avatar {
+  width: 150px;
+  height: 150px;
+  margin-right: 40px;
+}
+
+.TutorCard__content_container {
+  padding: 10px;
+  width: 100%;
+}
+
+.TutorCard__content_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.TutorCard__content_left {
+}
+
+.TutorCard__name_rating {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+
+.TutorCard__location_container {
+}
+
+.TutorCard__name {
+  margin: 0;
+}
+.TutorCard__rating {
+}
+
+.TutorCard__content_right {
+}

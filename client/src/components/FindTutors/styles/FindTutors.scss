@@ -1,0 +1,31 @@
+@import '../../../constants/colors';
+
+.FindTutors__content {
+  margin-top: 55px;
+  padding: 20px 10%;
+  background-color: #f1f1f1;
+}
+
+.FindTutors__heading_container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.FindTutors__heading_text_container {
+}
+
+.FindTutors__heading_title {
+  margin: 0;
+}
+
+.FindTutors__heading_description {
+  margin-top: 10px;
+}
+
+.FindTutors__icon_search {
+  width: 80px;
+  height: 80px;
+}
