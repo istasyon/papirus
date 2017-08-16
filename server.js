@@ -30,7 +30,7 @@ db.once('open', () => {
 // HTTP request logger with Standard Apache combined log output
 app.use(morgan('combined'));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: '*/*' }));
 
 // Helmet is a collection of 11 smaller middleware functions
 // that set HTTP headers to secure Express apps
