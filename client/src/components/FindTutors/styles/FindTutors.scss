@@ -1,5 +1,15 @@
 @import '../../../constants/colors';
 
+.TutorCard__container {
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
 .FindTutors__content {
   margin-top: 55px;
   padding: 20px 10%;

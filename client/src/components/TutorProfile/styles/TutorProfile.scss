@@ -1,0 +1,57 @@
+@import '../../../constants/colors';
+
+.TutorProfile__detail {
+  background-color: #f1f1f1;
+}
+
+.TutorProfile__detail_inner_container {
+  padding-left: 10%;
+  padding-right: 10%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.TutorProfile__detail_left {
+  background-color: #fff;
+  width: 66%;
+  margin-top: 20px;
+}
+
+.TutorProfile__detail_right {
+  width: 30%;
+}
+
+.TutorProfile__detail_right_container {
+  position: fixed;
+  width: 30%;
+}
+
+.TutorProfile__book_card {
+  position: relative;
+  top: -20px;
+  width: 100%;
+}
+
+.TutorProfile__book_card_top {
+  background-color: $blue-dark;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  span {
+    color: #fff;
+  }
+}
+
+.TutorProfile__book_card_content {
+  text-align: center;
+  background-color: #fff;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.TutorProfile__video {
+  width: 100%;
+  height: 380px;
+}

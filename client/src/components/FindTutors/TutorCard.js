@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles/TutorCard.scss';
 
 export default class TutorCard extends Component {
   render() {
     return (
-      <div className="TutorCard__container">
+      <Link to="/tutors/merve-p-123" className="TutorCard__container">
         <img
           src="https://randomuser.me/api/portraits/men/94.jpg"
           className="TutorCard__avatar"
-          alt="search icon"
+          alt="user avatar"
         />
         <div className="TutorCard__content_container">
           <div className="TutorCard__content_top">
@@ -33,7 +34,7 @@ export default class TutorCard extends Component {
             voluptate
           </p>
         </div>
-      </div>
+      </Link>
     );
   }
 }
