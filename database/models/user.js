@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   lastName: String,
   birthday: Date,
   email: { type: String, lowercase: true, required: true },
+  imageUrl: String,
 
   isTutor: Boolean,
   applicationStatus: String,
@@ -16,7 +17,13 @@ const UserSchema = new Schema({
   videoUrl: String,
   description: String,
   experience: String,
-  education: String
+  education: String,
+  hourlyRate: Number,
+  rating: Number,
+  location: {
+    type: { type: String },
+    coordinates: [Number]
+  }
 });
 
 const User = mongoose.model('user', UserSchema);

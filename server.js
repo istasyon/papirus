@@ -27,7 +27,7 @@ db.once('open', () => {
   console.log('Connected to MongoDB server.');
 });
 
-require('./database/seeds');
+// require('./database/seeds');
 
 // HTTP request logger with Standard Apache combined log output
 app.use(morgan('combined'));
