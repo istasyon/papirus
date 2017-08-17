@@ -16,7 +16,9 @@ export default class TutorCard extends Component {
           <div className="TutorCard__content_top">
             <div className="TutorCard__content_left">
               <div className="TutorCard__name_rating">
-                <h3 className="TutorCard__name">Merve P.</h3>
+                <h3 className="TutorCard__name">
+                  {this.props.data.firstName}
+                </h3>
                 <div className="TutorCard__rating">5</div>
               </div>
               <div className="TutorCard__location_container">
