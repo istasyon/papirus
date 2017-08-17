@@ -30,7 +30,7 @@ export default class FindTutors extends Component {
 
   async loadMore() {
     const response = await axios.post(
-      `/api/tutors?length=${this.state.tutors.length}`
+      `/api/tutors?offset=${this.state.tutors.length}`
     );
     if (response.data.tutors.length < 1) {
       return this.setState({ loadFinished: true });
