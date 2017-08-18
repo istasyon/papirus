@@ -5,10 +5,19 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   firstName: String,
   lastName: String,
+  facebookId: {
+    type: String,
+    sparse: true,
+    unique: true
+  },
+  googleId: {
+    type: String,
+    sparse: true,
+    unique: true
+  },
   birthday: Date,
   email: { type: String, lowercase: true, required: true },
   imageUrl: String,
-
   isTutor: Boolean,
   applicationStatus: String,
   applicationDate: Date,
