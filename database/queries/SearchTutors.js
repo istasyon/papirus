@@ -2,12 +2,29 @@ const User = require('../models/user');
 
 module.exports = (
   criteria,
-  sortProperty = 'rating',
+  sortProperty = 'rating desc',
   offset = 0,
   limit = 20
 ) => {
+  let sortType;
+  switch (sortProperty) {
+    case 'rating desc':
+      sortType = { rating: -1 };
+      break;
+    case 'rating asc':
+      sortType = { rating: 1 };
+      break;
+    case 'hourly desc':
+      sortType = { hourlyRate: -1 };
+      break;
+    case 'hourly asc':
+      sortType = { hourlyRate: 1 };
+      break;
+    default:
+      sortType = { rating: -1 };
+  }
   const query = User.find(buildQuery(criteria))
-    .sort({ [sortProperty]: -1 })
+    .sort(sortType)
     .skip(+offset)
     .limit(limit);
 

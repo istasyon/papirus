@@ -17,10 +17,11 @@ export default class FindTutors extends Component {
       platform: 'BOTH',
       hourlyRateMin: 20,
       hourlyRateMax: 60,
-      sortProperty: 'rating'
+      sortProperty: 'rating desc'
     };
     this.loadMore = this.loadMore.bind(this);
     this.handlePlatform = this.handlePlatform.bind(this);
+    this.handleSort = this.handleSort.bind(this);
   }
 
   async componentDidMount() {
@@ -56,6 +57,18 @@ export default class FindTutors extends Component {
     });
   }
 
+  async handleSort(sortProperty) {
+    const { hourlyRateMin, hourlyRateMax, platform } = this.state;
+    const response = await axios.post(
+      `/api/tutors?platform=${platform}&hourlyRateMin=${hourlyRateMin}&hourlyRateMax=${hourlyRateMax}&sortProperty=${sortProperty}`
+    );
+    this.setState({
+      tutors: response.data.tutors,
+      sortProperty,
+      loadFinished: false
+    });
+  }
+
   render() {
     return (
       <main>
@@ -75,7 +88,10 @@ export default class FindTutors extends Component {
               alt="search icon"
             />
           </div>
-          <TutorFilter onPlatform={this.handlePlatform} />
+          <TutorFilter
+            onPlatform={this.handlePlatform}
+            onSort={this.handleSort}
+          />
           <InfiniteScroll
             pageStart={0}
             loadMore={this.loadMore}
