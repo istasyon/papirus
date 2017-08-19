@@ -25,7 +25,10 @@ export default class FindTutors extends Component {
   }
 
   async componentDidMount() {
-    const response = await axios.post('/api/tutors');
+    const { platform, sortProperty } = this.state;
+    const response = await axios.post(
+      `/api/tutors?platform=${platform}&sortProperty={sortProperty}`
+    );
     this.setState({ tutors: response.data.tutors });
   }
 
