@@ -5,30 +5,40 @@ import './styles/TutorCard.scss';
 
 export default class TutorCard extends Component {
   render() {
+    const {
+      firstName,
+      rating,
+      imageUrl,
+      hourlyRate,
+      platform
+    } = this.props.data;
     return (
       <Link to="/tutors/merve-p-123" className="TutorCard__container">
-        <img
-          src="https://randomuser.me/api/portraits/men/94.jpg"
-          className="TutorCard__avatar"
-          alt="user avatar"
-        />
+        <img src={imageUrl} className="TutorCard__avatar" alt="user avatar" />
         <div className="TutorCard__content_container">
           <div className="TutorCard__content_top">
             <div className="TutorCard__content_left">
               <div className="TutorCard__name_rating">
                 <h3 className="TutorCard__name">
-                  {this.props.data.firstName}
+                  {firstName}
                 </h3>
-                <div className="TutorCard__rating">5</div>
+                <div className="TutorCard__rating">
+                  {rating}
+                </div>
               </div>
               <div className="TutorCard__location_container">
                 <p>Besiktas, Istanbul</p>
               </div>
+              <p>
+                PLATFORM: {platform}
+              </p>
             </div>
             <div className="TutorCard__content_right">
               <button>Book Now</button>
               <button>Send Message</button>
-              <p>Hourly Rate: 30$</p>
+              <p>
+                Hourly Rate: {hourlyRate}$
+              </p>
             </div>
           </div>
           <p>

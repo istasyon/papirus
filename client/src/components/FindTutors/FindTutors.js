@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 import Navbar from '../common/Navbar';
 import TutorCard from './TutorCard';
+import TutorFilter from './TutorFilter';
 
 import './styles/FindTutors.scss';
 
@@ -12,9 +13,14 @@ export default class FindTutors extends Component {
     super(props);
     this.state = {
       tutors: [],
-      loadFinished: false
+      loadFinished: false,
+      platform: 'BOTH',
+      hourlyRateMin: 20,
+      hourlyRateMax: 60,
+      sortProperty: 'rating'
     };
     this.loadMore = this.loadMore.bind(this);
+    this.handlePlatform = this.handlePlatform.bind(this);
   }
 
   async componentDidMount() {
@@ -38,6 +44,18 @@ export default class FindTutors extends Component {
     this.setState({ tutors: this.state.tutors.concat(response.data.tutors) });
   }
 
+  async handlePlatform(platform) {
+    const { hourlyRateMin, hourlyRateMax, sortProperty } = this.state;
+    const response = await axios.post(
+      `/api/tutors?platform=${platform}&hourlyRateMin=${hourlyRateMin}&hourlyRateMax=${hourlyRateMax}&sortProperty=${sortProperty}`
+    );
+    this.setState({
+      tutors: response.data.tutors,
+      platform,
+      loadFinished: false
+    });
+  }
+
   render() {
     return (
       <main>
@@ -57,6 +75,7 @@ export default class FindTutors extends Component {
               alt="search icon"
             />
           </div>
+          <TutorFilter onPlatform={this.handlePlatform} />
           <InfiniteScroll
             pageStart={0}
             loadMore={this.loadMore}
