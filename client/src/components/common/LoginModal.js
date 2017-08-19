@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Modal } from 'react-bootstrap';
+import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
+import axios from 'axios';
 
 class LoginModal extends Component {
   constructor(props) {
@@ -7,6 +10,24 @@ class LoginModal extends Component {
     this.state = {
       modalType: props.modalType
     };
+    this.handleFacebook = this.handleFacebook.bind(this);
+    this.handleGoogle = this.handleGoogle.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ modalType: nextProps.modalType });
+  }
+
+  async handleFacebook(token) {
+    const response = await axios.post('/api/users/facebook_auth', { token });
+    this.props.close();
+    console.log(response.data);
+  }
+
+  async handleGoogle(token) {
+    const response = await axios.post('/api/users/google_auth', { token });
+    this.props.close();
+    console.log(response.data);
   }
 
   render() {
@@ -26,14 +47,32 @@ class LoginModal extends Component {
         <Modal.Body>
           {modalType == 'login'
             ? <div>
-                <a>Login with Facebook</a>
+                <FacebookLogin
+                  appId="1548012248553735"
+                  fields="name,email,picture"
+                  callback={res => this.handleFacebook(res.accessToken)}
+                />
                 <br />
-                <a>Login with Google</a>
+                <GoogleLogin
+                  clientId="768933820789-9rp4bnd757kb45uqbdacum58lqm4tfo3.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={res => this.handleGoogle(res.accessToken)}
+                  onFailure={err => console.log(err)}
+                />
               </div>
             : <div>
-                <a>Sign Up with Facebook</a>
+                <FacebookLogin
+                  appId="1548012248553735"
+                  fields="name,email,picture"
+                  callback={res => this.handleFacebook(res.accessToken)}
+                />
                 <br />
-                <a>Sign Up with Google</a>
+                <GoogleLogin
+                  clientId="768933820789-9rp4bnd757kb45uqbdacum58lqm4tfo3.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={res => this.handleGoogle(res.accessToken)}
+                  onFailure={err => console.log(err)}
+                />
               </div>}
         </Modal.Body>
         <Modal.Footer>
