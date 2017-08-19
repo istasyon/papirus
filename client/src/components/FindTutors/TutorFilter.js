@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FormControl } from 'react-bootstrap';
 import ReactSlider from 'react-slider';
+
+import CATEGORIES from '../../constants/categories';
 import './styles/TutorFilter.scss';
 
 export default class TutorFilter extends Component {
@@ -49,6 +51,21 @@ export default class TutorFilter extends Component {
             {this.state.slider[1]}
           </div>
         </ReactSlider>
+        <FormControl
+          componentClass="select"
+          value={this.props.category}
+          onChange={event => {
+            this.props.onCategory(event.target.value);
+          }}
+        >
+          {CATEGORIES.map(item => {
+            return (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </FormControl>
       </div>
     );
   }

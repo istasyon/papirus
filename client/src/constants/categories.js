@@ -1,14 +1,14 @@
 const CATEGORIES = [
-  "Tennis",
-  "Basketball",
-  "Football",
-  "Math",
-  "Music",
-  "Chess",
-  "Russian",
-  "English",
-  "German",
-  "Yoga"
+  'English',
+  'Tennis',
+  'Basketball',
+  'Football',
+  'Math',
+  'Music',
+  'Chess',
+  'Russian',
+  'German',
+  'Yoga'
 ];
 
 export default CATEGORIES;

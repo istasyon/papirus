@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import LandingNavbar from './LandingNavbar';
+import { FormControl } from 'react-bootstrap';
 import CATEGORIES from '../../constants/categories';
 import './styles/Hero.scss';
 
@@ -8,8 +9,7 @@ class Hero extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: '',
-      categories: CATEGORIES
+      searchValue: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -33,20 +33,20 @@ class Hero extends Component {
             </h1>
             <form onSubmit={this.handleSubmit}>
               <div>
-                <input
-                  type="text"
-                  list="categories"
+                <select
                   className="Hero__searchinput"
-                  placeholder="What do you want to learn?"
-                  value={this.state.searchValue}
-                  onChange={event =>
-                    this.setState({ searchValue: event.target.value })}
-                />
-                <datalist id="categories">
-                  {this.state.categories.map(item =>
-                    <option key={item} value={item} />
-                  )}
-                </datalist>
+                  onChange={event => {
+                    this.setState({ searchValue: event.target.value });
+                  }}
+                >
+                  {CATEGORIES.map(item => {
+                    return (
+                      <option key={item} value={item}>
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
               <button
                 type="submit"

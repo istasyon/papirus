@@ -7,10 +7,11 @@ exports.tutors = async (req, res) => {
     hourlyRateMax,
     sortProperty,
     offset,
-    limit
+    limit,
+    category
   } = req.query;
   const tutors = await searchTutors(
-    { platform, hourlyRateMin, hourlyRateMax },
+    { platform, hourlyRateMin, hourlyRateMax, teachingSubjects: category },
     sortProperty,
     offset,
     limit

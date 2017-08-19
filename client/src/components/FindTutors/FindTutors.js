@@ -17,20 +17,28 @@ export default class FindTutors extends Component {
       platform: 'BOTH',
       hourlyRateMin: 20,
       hourlyRateMax: 60,
-      sortProperty: 'rating desc'
+      sortProperty: 'rating desc',
+      category: 'English'
     };
     this.loadMore = this.loadMore.bind(this);
     this.handlePlatform = this.handlePlatform.bind(this);
     this.handleSort = this.handleSort.bind(this);
     this.handleHourlyRate = this.handleHourlyRate.bind(this);
+    this.handleCategory = this.handleCategory.bind(this);
   }
 
   async componentDidMount() {
     const { platform, sortProperty } = this.state;
-    const response = await axios.post(
-      `/api/tutors?platform=${platform}&sortProperty={sortProperty}`
-    );
-    this.setState({ tutors: response.data.tutors });
+    if (this.props.match.params.category) {
+      let category = this.props.match.params.category;
+      this.handleCategory(category.charAt(0).toUpperCase() + category.slice(1));
+    } else {
+      const response = await axios.post(
+        `/api/tutors?platform=${platform}&sortProperty=${sortProperty}&category=${this
+          .state.category}`
+      );
+      this.setState({ tutors: response.data.tutors });
+    }
   }
 
   renderTutors() {
@@ -40,8 +48,16 @@ export default class FindTutors extends Component {
   }
 
   async loadMore() {
+    const {
+      hourlyRateMin,
+      hourlyRateMax,
+      platform,
+      category,
+      sortProperty
+    } = this.state;
     const response = await axios.post(
-      `/api/tutors?offset=${this.state.tutors.length}`
+      `/api/tutors??platform=${platform}&hourlyRateMin=${hourlyRateMin}&hourlyRateMax=${hourlyRateMax}&sortProperty=${sortProperty}&category=${category}&offset=${this
+        .state.tutors.length}`
     );
     if (response.data.tutors.length < 1) {
       return this.setState({ loadFinished: true });
@@ -50,9 +66,9 @@ export default class FindTutors extends Component {
   }
 
   async handlePlatform(platform) {
-    const { hourlyRateMin, hourlyRateMax, sortProperty } = this.state;
+    const { hourlyRateMin, hourlyRateMax, sortProperty, category } = this.state;
     const response = await axios.post(
-      `/api/tutors?platform=${platform}&hourlyRateMin=${hourlyRateMin}&hourlyRateMax=${hourlyRateMax}&sortProperty=${sortProperty}`
+      `/api/tutors?platform=${platform}&hourlyRateMin=${hourlyRateMin}&hourlyRateMax=${hourlyRateMax}&sortProperty=${sortProperty}&category=${category}`
     );
     this.setState({
       tutors: response.data.tutors,
@@ -62,9 +78,9 @@ export default class FindTutors extends Component {
   }
 
   async handleSort(sortProperty) {
-    const { hourlyRateMin, hourlyRateMax, platform } = this.state;
+    const { hourlyRateMin, hourlyRateMax, platform, category } = this.state;
     const response = await axios.post(
-      `/api/tutors?platform=${platform}&hourlyRateMin=${hourlyRateMin}&hourlyRateMax=${hourlyRateMax}&sortProperty=${sortProperty}`
+      `/api/tutors?platform=${platform}&hourlyRateMin=${hourlyRateMin}&hourlyRateMax=${hourlyRateMax}&sortProperty=${sortProperty}&category=${category}`
     );
     this.setState({
       tutors: response.data.tutors,
@@ -74,14 +90,26 @@ export default class FindTutors extends Component {
   }
 
   async handleHourlyRate(val) {
-    const { sortProperty, platform } = this.state;
+    const { sortProperty, platform, category } = this.state;
     const response = await axios.post(
-      `/api/tutors?platform=${platform}&hourlyRateMin=${val[0]}&hourlyRateMax=${val[1]}&sortProperty=${sortProperty}`
+      `/api/tutors?platform=${platform}&hourlyRateMin=${val[0]}&hourlyRateMax=${val[1]}&sortProperty=${sortProperty}&category=${category}`
     );
     this.setState({
       tutors: response.data.tutors,
       hourlyRateMin: val[0],
       hourlyRateMax: val[1],
+      loadFinished: false
+    });
+  }
+
+  async handleCategory(category) {
+    const { sortProperty, platform, hourlyRateMin, hourlyRateMax } = this.state;
+    const response = await axios.post(
+      `/api/tutors?platform=${platform}&hourlyRateMin=${hourlyRateMin}&hourlyRateMax=${hourlyRateMax}&sortProperty=${sortProperty}&category=${category}`
+    );
+    this.setState({
+      tutors: response.data.tutors,
+      category,
       loadFinished: false
     });
   }
@@ -109,6 +137,8 @@ export default class FindTutors extends Component {
             onPlatform={this.handlePlatform}
             onSort={this.handleSort}
             onHourlyRate={this.handleHourlyRate}
+            onCategory={this.handleCategory}
+            category={this.state.category}
           />
           <InfiniteScroll
             pageStart={0}

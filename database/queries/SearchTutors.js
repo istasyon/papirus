@@ -46,6 +46,10 @@ const buildQuery = criteria => {
     query.platform = criteria.platform;
   }
 
+  if (criteria.teachingSubjects) {
+    query.teachingSubjects = criteria.teachingSubjects;
+  }
+
   if (criteria.hourlyRateMin && criteria.hourlyRateMax) {
     query.hourlyRate = {
       $gte: criteria.hourlyRateMin,
