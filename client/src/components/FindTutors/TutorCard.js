@@ -11,10 +11,11 @@ export default class TutorCard extends Component {
       imageUrl,
       hourlyRate,
       platform,
-      teachingSubjects
+      teachingSubjects,
+      _id
     } = this.props.data;
     return (
-      <Link to="/tutors/merve-p-123" className="TutorCard__container">
+      <Link to={`/tutors/${_id}`} className="TutorCard__container">
         <img src={imageUrl} className="TutorCard__avatar" alt="user avatar" />
         <div className="TutorCard__content_container">
           <div className="TutorCard__content_top">
@@ -27,9 +28,9 @@ export default class TutorCard extends Component {
                   {rating}
                 </div>
               </div>
-              <div className="TutorCard__location_container">
+              {/* <div className="TutorCard__location_container">
                 <p>Besiktas, Istanbul</p>
-              </div>
+              </div> */}
               <p>
                 PLATFORM: {platform}
               </p>

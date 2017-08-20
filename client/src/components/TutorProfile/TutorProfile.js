@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import Navbar from '../common/Navbar';
 import ProfileTop from './ProfileTop';
 import './styles/TutorProfile.scss';
 
 export default class TutorProfile extends Component {
+  state = {
+    user: {},
+    loading: true
+  };
+
+  async componentDidMount() {
+    const response = await axios.get(
+      `/api/users/${this.props.match.params.tutorID}`
+    );
+    this.setState({ user: response.data, loading: false });
+  }
+
   render() {
+    if (this.state.loading) {
+      return <h1>LOADING</h1>;
+    }
+    const {
+      teachingSubjects,
+      description,
+      education,
+      experience,
+      hourlyRate
+    } = this.state.user;
     return (
       <main className="TutorProfile">
         <Navbar />
-        <ProfileTop />
+        <ProfileTop user={this.state.user} />
         <section className="TutorProfile__detail">
           <div className="TutorProfile__detail_inner_container">
             <div className="TutorProfile__detail_left">
@@ -17,16 +40,18 @@ export default class TutorProfile extends Component {
                 className="TutorProfile__video"
                 src="https://www.youtube.com/embed/7q6YekNTwHA"
               />
-              <h3>English</h3>
+              <h3>
+                {teachingSubjects[0]}
+              </h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa a
-                velit alias ratione debitis, consequatur, laudantium at vero
-                perferendis molestiae, nobis saepe ut eaque! Necessitatibus
-                ratione quibusdam iste velit, distinctio.
+                {description}
               </p>
               <h3>Education</h3>
+              <p>
+                {education}
+              </p>
               <h3>Experiences</h3>
-              <h3>Certificates</h3>
+              {experience}
               <h3>Comments</h3>
             </div>
             <div className="TutorProfile__detail_right">
@@ -36,7 +61,9 @@ export default class TutorProfile extends Component {
                     <span className="TutorProfile__book_card_rate">
                       Hourly Rate
                     </span>
-                    <span>75.00 EUR</span>
+                    <span>
+                      {hourlyRate} EUR
+                    </span>
                   </div>
                   <div className="TutorProfile__book_card_content">
                     <button>BOOK NOW</button>
