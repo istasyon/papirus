@@ -11,11 +11,11 @@ import TutorProfile from './components/TutorProfile';
 class Router extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user'));
     if (token && user) {
       this.props.loginUser(token, user);
     } else {
-      this.props.loginUser();
+      this.props.loginUser(null, null);
     }
   }
   render() {

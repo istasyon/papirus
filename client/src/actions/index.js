@@ -2,8 +2,10 @@ import axios from 'axios';
 import { LOGIN_USER, LOGOUT_USER } from './types';
 
 export const loginUser = (token = null, user = null) => {
-  localStorage.setItem('token', token);
-  localStorage.setItem('user', user ? JSON.stringify(user) : null);
+  if (token && user) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+  }
   return { type: LOGIN_USER, payload: user };
 };
 
