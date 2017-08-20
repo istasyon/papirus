@@ -3,6 +3,8 @@ import { Modal } from 'react-bootstrap';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 class LoginModal extends Component {
   constructor(props) {
@@ -21,13 +23,13 @@ class LoginModal extends Component {
   async handleFacebook(token) {
     const response = await axios.post('/api/users/facebook_auth', { token });
     this.props.close();
-    console.log(response.data);
+    this.props.loginUser(response.data.token, response.data.user);
   }
 
   async handleGoogle(token) {
     const response = await axios.post('/api/users/google_auth', { token });
     this.props.close();
-    console.log(response.data);
+    this.props.loginUser(response.data.token, response.data.user);
   }
 
   render() {
@@ -89,4 +91,4 @@ class LoginModal extends Component {
   }
 }
 
-export default LoginModal;
+export default connect(null, actions)(LoginModal);
